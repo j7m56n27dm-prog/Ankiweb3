@@ -1,0 +1,357 @@
+/* macOS Window Styles */
+.macos-titlebar {
+    height: 40px;
+    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid #1a1a1a;
+    -webkit-app-region: drag;
+    user-select: none;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+    margin-right: 20px;
+    -webkit-app-region: no-drag;
+}
+
+.traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.3);
+}
+
+.traffic-light.close { background: #ff5f57; }
+.traffic-light.minimize { background: #ffbd2e; }
+.traffic-light.maximize { background: #28ca42; }
+
+.titlebar-title {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.8;
+    flex: 1;
+}
+
+.titlebar-menu {
+    display: flex;
+    gap: 20px;
+    -webkit-app-region: no-drag;
+}
+
+.menu-item {
+    color: #fff;
+    font-size: 13px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: default;
+}
+
+.menu-item:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* Main Layout */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 280px;
+    background: #2a2a2a;
+    border-right: 1px solid #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sidebar-header {
+    padding: 16px;
+    border-bottom: 1px solid #3a3a3a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar-header h3 {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #999;
+}
+
+.center-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* macOS Scrollbars */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* macOS Buttons */
+.anki-button {
+    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+    border: 1px solid #1a1a1a;
+    border-radius: 6px;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+}
+
+.anki-button:hover {
+    background: linear-gradient(to bottom, #555, #444);
+    border-color: #2a2a2a;
+}
+
+.anki-button:active {
+    background: linear-gradient(to bottom, #3a3a3a, #4a4a4a);
+    transform: translateY(1px);
+}
+
+.anki-button.primary {
+    background: linear-gradient(to bottom, #0066cc, #0055aa);
+    border-color: #004488;
+}
+
+.anki-button.primary:hover {
+    background: linear-gradient(to bottom, #0077e6, #0066cc);
+}
+
+.anki-button.small {
+    padding: 4px 8px;
+    font-size: 11px;
+}
+
+/* Toolbar */
+.anki-toolbar {
+    padding: 12px 16px;
+    border-bottom: 1px solid #3a3a3a;
+    background: #333;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.anki-toolbar-btn {
+    background: linear-gradient(to bottom, #444, #333);
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.anki-toolbar-btn:hover {
+    background: linear-gradient(to bottom, #555, #444);
+}
+
+.anki-toolbar-btn:active {
+    background: linear-gradient(to bottom, #333, #444);
+}
+
+.toolbar-spacer {
+    flex: 1;
+}
+
+/* Status Bar */
+.macos-statusbar {
+    height: 24px;
+    background: #2a2a2a;
+    border-top: 1px solid #1a1a1a;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 11px;
+    color: #999;
+}
+
+.status-item {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.status-spacer {
+    flex: 1;
+}
+
+/* macOS Modal */
+.anki-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.macos-window {
+    background: #2e2e2e;
+    border-radius: 10px;
+    border: 1px solid #1a1a1a;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    overflow: hidden;
+    min-width: 400px;
+}
+
+.modal-header {
+    padding: 16px;
+    border-bottom: 1px solid #3a3a3a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, #4a4a4a, #3a3a3a);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.modal-close:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+/* Deck List */
+.decks-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 0;
+}
+
+.deck-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.deck-item:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.deck-item.active {
+    background: rgba(0, 102, 204, 0.2);
+    border-left: 3px solid #0066cc;
+}
+
+.deck-name {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.deck-counts {
+    display: flex;
+    gap: 8px;
+    font-size: 11px;
+}
+
+.deck-due {
+    color: #ff6b6b;
+}
+
+.deck-new {
+    color: #4ecdc4;
+}
+
+/* Responsive for iPhone */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 240px;
+    }
+    
+    .macos-titlebar .titlebar-menu {
+        display: none;
+    }
+    
+    .anki-toolbar-btn span {
+        display: none;
+    }
+    
+    .anki-toolbar-btn {
+        padding: 10px;
+    }
+    
+    .macos-window {
+        min-width: 90vw;
+        max-height: 90vh;
+    }
+}
+
+/* iPhone X+ Safe Areas */
+@supports (padding: max(0px)) {
+    .main-content {
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+    
+    .macos-statusbar {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}

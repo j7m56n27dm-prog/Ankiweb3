@@ -1,0 +1,61 @@
+{
+    "name": "Anki Desktop",
+    "short_name": "Anki",
+    "description": "Powerful, intelligent flashcards. Exact macOS Anki 2.1.66 clone for iPhone.",
+    "start_url": "/",
+    "display": "standalone",
+    "display_override": ["window-controls-overlay"],
+    "orientation": "any",
+    "background_color": "#1e1e1e",
+    "theme_color": "#1e1e1e",
+    "categories": ["education", "productivity"],
+    "icons": [
+        {
+            "src": "/assets/icons/anki-icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/icons/anki-icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/icons/anki-icon-180.png",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "apple-touch-icon"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/assets/screenshots/iphone-study.png",
+            "sizes": "1170x2532",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Study Screen"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Study Now",
+            "short_name": "Study",
+            "description": "Start a study session",
+            "url": "/?study=true",
+            "icons": [{ "src": "/assets/icons/study-96.png", "sizes": "96x96" }]
+        },
+        {
+            "name": "Add Cards",
+            "short_name": "Add",
+            "description": "Create new flashcards",
+            "url": "/?add=true",
+            "icons": [{ "src": "/assets/icons/add-96.png", "sizes": "96x96" }]
+        }
+    ],
+    "prefer_related_applications": false,
+    "edge_side_panel": {
+        "preferred_width": 400
+    }
+}

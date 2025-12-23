@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Anki</title>
+    <meta name="apple-mobile-web-app-title" content="Anki">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/macos-ui.css">
+    <link rel="stylesheet" href="css/anki-styles.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="apple-touch-startup-image" href="assets/splash/launch-1242x2688.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="theme-color" content="#2e2e2e">
+    <style>
+        :root {
+            --macos-window-bg: #2e2e2e;
+            --macos-titlebar-bg: #2e2e2e;
+            --anki-blue: #0066cc;
+            --anki-hover-blue: #0077e6;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--macos-window-bg);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow: hidden;
+        }
+        #app {
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <!-- macOS Style Title Bar -->
+        <div class="macos-titlebar">
+            <div class="traffic-lights">
+                <div class="traffic-light close"></div>
+                <div class="traffic-light minimize"></div>
+                <div class="traffic-light maximize"></div>
+            </div>
+            <div class="titlebar-title">Anki</div>
+            <div class="titlebar-menu">
+                <div class="menu-item">File</div>
+                <div class="menu-item">Edit</div>
+                <div class="menu-item">View</div>
+                <div class="menu-item">Tools</div>
+                <div class="menu-item">Help</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Left Sidebar (Decks) -->
+            <div class="sidebar decks-sidebar">
+                <div class="sidebar-header">
+                    <h3>DECKS</h3>
+                    <button class="anki-button small">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+                <div class="decks-list" id="decks-list">
+                    <!-- Decks will be populated here -->
+                </div>
+                <div class="sidebar-footer">
+                    <div class="deck-stats">
+                        <div>Due: <span id="total-due">0</span></div>
+                        <div>New: <span id="total-new">0</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center Content -->
+            <div class="center-content">
+                <!-- Toolbar -->
+                <div class="anki-toolbar">
+                    <button class="anki-toolbar-btn" id="btn-study">
+                        <i class="fas fa-play"></i> Study
+                    </button>
+                    <button class="anki-toolbar-btn" id="btn-add">
+                        <i class="fas fa-plus"></i> Add
+                    </button>
+                    <button class="anki-toolbar-btn" id="btn-browse">
+                        <i class="fas fa-table"></i> Browse
+                    </button>
+                    <button class="anki-toolbar-btn" id="btn-stats">
+                        <i class="fas fa-chart-bar"></i> Stats
+                    </button>
+                    <div class="toolbar-spacer"></div>
+                    <button class="anki-toolbar-btn" id="btn-sync">
+                        <i class="fas fa-sync-alt"></i> Sync
+                    </button>
+                </div>
+
+                <!-- Dynamic Content Area -->
+                <div class="content-area" id="content-area">
+                    <!-- Default: Deck overview -->
+                    <div class="deck-overview" id="deck-overview">
+                        <div class="anki-empty-state">
+                            <i class="fas fa-layer-group fa-3x"></i>
+                            <h2>No Deck Selected</h2>
+                            <p>Select a deck from the sidebar to begin studying</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar (Stats/Info) -->
+            <div class="sidebar info-sidebar">
+                <div class="sidebar-header">
+                    <h3>DECK OPTIONS</h3>
+                </div>
+                <div class="deck-options" id="deck-options">
+                    <!-- Options will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="macos-statusbar">
+            <div class="status-item">Cards: <span id="status-cards">0</span></div>
+            <div class="status-item">Due: <span id="status-due">0</span></div>
+            <div class="status-item">New: <span id="status-new">0</span></div>
+            <div class="status-spacer"></div>
+            <div class="status-item" id="status-sync"><i class="fas fa-check-circle"></i> Local</div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="anki-modal" id="add-card-modal" style="display: none;">
+        <div class="modal-content macos-window">
+            <div class="modal-header">
+                <h3>Add Cards</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- Add card form will be here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Study Modal -->
+    <div class="anki-modal" id="study-modal" style="display: none;">
+        <div class="study-window macos-window">
+            <!-- Study content will be here -->
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.5/purify.min.js"></script>
+    <script src="js/anki-core.js" type="module"></script>
+    <script src="js/macos-ui.js"></script>
+    <script src="js/anki-scheduler.js"></script>
+    <script src="js/anki-db.js"></script>
+    <script src="js/anki-app.js"></script>
+    
+    <script>
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js', { scope: '/' })
+                .then(reg => console.log('Service Worker registered'))
+                .catch(err => console.log('SW registration failed:', err));
+        }
+
+        // Prevent context menu on long press
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Prevent zoom on double-tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', (e) => {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) e.preventDefault();
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

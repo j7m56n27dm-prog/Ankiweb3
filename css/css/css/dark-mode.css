@@ -1,0 +1,221 @@
+/* Dark Mode - Exact macOS Anki Theme */
+
+[data-theme="dark"] {
+    /* Window Colors */
+    --window-bg: #2e2e2e;
+    --titlebar-bg: #2e2e2e;
+    --sidebar-bg: #2a2a2a;
+    --toolbar-bg: #333333;
+    --statusbar-bg: #2a2a2a;
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #cccccc;
+    --text-tertiary: #999999;
+    --text-disabled: #666666;
+    
+    /* Border Colors */
+    --border-primary: #444444;
+    --border-secondary: #555555;
+    --border-tertiary: #666666;
+    
+    /* Interactive Colors */
+    --button-bg: #3a3a3a;
+    --button-hover: #444444;
+    --button-active: #4a4a4a;
+    --button-border: #555555;
+    
+    /* Special Colors */
+    --selection-bg: #0066cc;
+    --selection-text: #ffffff;
+    --link-color: #66b3ff;
+    
+    /* Card Colors */
+    --card-bg: #3a3a3a;
+    --card-border: #555555;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Input Colors */
+    --input-bg: #3a3a3a;
+    --input-border: #555555;
+    --input-text: #ffffff;
+    --input-placeholder: #888888;
+    
+    /* Table Colors */
+    --table-header-bg: #333333;
+    --table-row-bg: #3a3a3a;
+    --table-row-alt: #363636;
+    --table-border: #444444;
+    
+    /* Scrollbar Colors */
+    --scrollbar-track: #2a2a2a;
+    --scrollbar-thumb: #555555;
+    --scrollbar-thumb-hover: #666666;
+}
+
+/* Apply Colors */
+body {
+    background-color: var(--window-bg);
+    color: var(--text-primary);
+}
+
+.macos-titlebar {
+    background: var(--titlebar-bg);
+    border-bottom-color: var(--border-primary);
+}
+
+.sidebar {
+    background: var(--sidebar-bg);
+    border-right-color: var(--border-primary);
+}
+
+.anki-toolbar {
+    background: var(--toolbar-bg);
+    border-bottom-color: var(--border-primary);
+}
+
+.macos-statusbar {
+    background: var(--statusbar-bg);
+    border-top-color: var(--border-primary);
+}
+
+/* Inputs */
+.form-input,
+.form-textarea,
+.form-select {
+    background: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-text);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+    color: var(--input-placeholder);
+}
+
+/* Buttons */
+.anki-button {
+    background: linear-gradient(to bottom, var(--button-bg), var(--button-active));
+    border-color: var(--button-border);
+    color: var(--text-primary);
+}
+
+.anki-button:hover {
+    background: linear-gradient(to bottom, var(--button-hover), var(--button-bg));
+}
+
+/* Tables */
+.browser-table th {
+    background: var(--table-header-bg);
+    border-bottom-color: var(--table-border);
+}
+
+.browser-table td {
+    border-bottom-color: var(--table-border);
+    color: var(--text-secondary);
+}
+
+.browser-table tr:nth-child(even) {
+    background: var(--table-row-alt);
+}
+
+/* Cards */
+.anki-card {
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: 0 4px 20px var(--card-shadow);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+/* Selection */
+::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
+}
+
+/* Links */
+a {
+    color: var(--link-color);
+}
+
+/* Deck Items */
+.deck-item {
+    border-bottom-color: var(--border-primary);
+}
+
+.deck-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.deck-item.active {
+    background: rgba(0, 102, 204, 0.2);
+}
+
+/* Answer Buttons in Dark Mode */
+.answer-btn-again {
+    background: linear-gradient(to bottom, #cc0000, #aa0000);
+    border-color: #aa0000;
+}
+
+.answer-btn-hard {
+    background: linear-gradient(to bottom, #cc9900, #aa7700);
+    border-color: #aa7700;
+    color: #fff;
+}
+
+.answer-btn-good {
+    background: linear-gradient(to bottom, #009900, #007700);
+    border-color: #007700;
+}
+
+.answer-btn-easy {
+    background: linear-gradient(to bottom, #0066cc, #0055aa);
+    border-color: #0055aa;
+}
+
+/* Modal */
+.macos-window {
+    background: var(--window-bg);
+    border-color: var(--border-primary);
+}
+
+.modal-header {
+    background: linear-gradient(to bottom, var(--button-hover), var(--button-bg));
+    border-bottom-color: var(--border-primary);
+}
+
+/* Study Window */
+.study-content {
+    background: var(--window-bg);
+}
+
+/* Stats Box */
+.stat-box {
+    background: var(--button-bg);
+    border-color: var(--button-border);
+}
+
+/* Media Thumbnail */
+.media-thumbnail {
+    background: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-tertiary);
+}
+
+/* Tooltip */
+[data-tooltip]:hover::after {
+    background: var(--button-active);
+    border-color: var(--button-border);
+}
